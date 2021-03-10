@@ -68,21 +68,21 @@ Unfortunately it doesn't cooperate very well with negative numbers, so we need t
 If we just offset+scale the values to 0..1 range, we get the following (exponents from 0 to 2 in below images):
 
 `(1- (* (expt (abs (* (1+ x) 0.5)) i) 2)) ;; X is input value, I is exponent`
-![scaled and shifted histogram of 4d noise](images/dark/perlin-4d-scaling-expt.gif)
+![scaled and shifted histogram of 4d noise](images/dark/4d-scaling-expt.gif)
 
 That would probably be good if we wanted to adjust the brightness when generating an image, but not quite what we want here.
 
 If we just take the absolute value, then add the sign back after `expt`, we get:
 
 `(* (signum x) (expt (abs x) i))`
-![scaled and shifted histogram of 4d noise](images/dark/perlin-4d-scaling-expt2.gif)
+![scaled and shifted histogram of 4d noise](images/dark/4d-scaling-expt2.gif)
 
 which is even worse, since it removes the center of the range, which should be the highest.
 
 We don't have many values near 1, so we can reverse the 0 to 1 range, and do the above, then reverse it again, and we get something more useful:
 
 `(* (signum x) (- 1 (expt (- 1 (abs x)) i)))`
-![scaled and shifted histogram of 4d noise](images/dark/perlin-4d-scaling.gif)
+![scaled and shifted histogram of 4d noise](images/dark/4d-scaling.gif)
 
 After a bit of trial and error, an exponent of `1.464` gives a pretty good match with the the 3d histogram:
 
