@@ -75,7 +75,7 @@ That would probably be good if we wanted to adjust the brightness when generatin
 If we just take the absolute value, then add the sign back after `expt`, we get:
 
 `(* (signum x) (expt (abs x) i))`
-![scaled and shifted histogram of 4d noise](images/dark/4d-scaling-expt2.gif)
+![scaled and shifted histogram of 4d noise](images/dark/4d-scaling-expt1.gif)
 
 which is even worse, since it removes the center of the range, which should be the highest.
 
