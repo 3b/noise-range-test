@@ -6,6 +6,24 @@ based on code from
 * 3d : https://mrl.cs.nyu.edu/~perlin/noise/
 * 4d : https://mrl.cs.nyu.edu/~perlin/noise/ImprovedNoise4D.java
 
+tl;dr: use simplex, opensimplex, etc instead if possible.
+
+tl;dr 2: 
+
+* 2d noise implemented as a z=0 slice of 3d as above has a range of -1 to 1, but an ugly distribution
+
+    Use a rotated slice of 3d noise, with same scale as normal 3d noise. Avoid angles within 5 or so degrees of a multiple of 45 degrees.
+* 3d noise has a range of ±1.0363535 so scale it by 0.9649214285521897
+
+    If you are using it for something that might end up taking slices at multiples of 0.5 on any axis (textureing an axis-aligned cube for example), you might want to rotate the input coordinates.
+* 4d noise has a range of ±1.536354 so scale it by 0.6507949348645372.
+
+    Like 3d, you might want to rotate coordinates if you might sample axis-aligned 2d slices.
+* The distribution after scaling 4d noise is narrower, so you might want an option to expand it to match other noise types.
+
+    `(* (signum x) (- 1 (expt (- 1 (abs x)) 1.464)))` gives a reasonable approximation of the 3d distribution.
+
+
 
 #### unscaled output range
 
