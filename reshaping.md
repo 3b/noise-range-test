@@ -60,7 +60,7 @@ Graph of function from `0` to `32` using single floats:
 
 3d noise, 4d reshaped with `K=0.79`, fBm reshaped with `K=3.95` with polynomial:
 
-![reshaped noise](images/reshape/reshape2.png)
+![reshaped noise](images/reshape/reshape2p.png)
 
 
 Histograms showing how the 2 functions compare, reshaping a 4d noise
