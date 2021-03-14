@@ -21,7 +21,7 @@ tl;dr 2:
     Like 3d, you might want to rotate coordinates if you might sample axis-aligned 2d slices.
 * The distribution after scaling 4d noise is narrower, so you might want an option to expand it to match other noise types.
 
-    See [reshaping.md]()
+    See [reshaping.md](reshaping.md)
 
 
 #### unscaled output range
@@ -78,7 +78,7 @@ That looks much better for avoiding errors from going out of bounds, or artifact
 
 ##### adjusting shape of distributions
 
-note: the reshaping in this section works OK for this specific use, but doesn't scale well, and can't fix narrower distributions as well. See [reshaping.md]() for more about that.
+note: the reshaping in this section works OK for this specific use, but doesn't scale well, and can't fix narrower distributions as well. See [reshaping.md](reshaping.md) for more about that.
 
 If we want to use more of the output range while still staying within predictable bounds, `EXPT` is a reasonable candidate, since it maps 0 to 0, 1 to 1, and pushes in-between values towards one edge or the other depending on the exponent.
 
