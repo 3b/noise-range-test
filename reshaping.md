@@ -64,6 +64,7 @@ Graph of function from `0` to `32` using single floats:
 
 ![reshaped noise](images/reshape/reshape2p.png)
 
+##### comparison
 
 Histograms showing how the 2 functions compare, reshaping a 4d noise
 distribution from the original standard deviation of `0.19` to
