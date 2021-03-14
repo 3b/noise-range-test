@@ -57,7 +57,7 @@ around `K=18` or so.
 
 Graph of function from `0` to `32` using single floats:
 
-![graphs of polynomial reshaping function for various K](images/reshape/k0-32-single.gif])
+![graphs of polynomial reshaping function for various K](images/reshape/k0-32-single.gif)
 
 
 3d noise, 4d reshaped with `K=0.79`, fBm reshaped with `K=3.95` with polynomial:
