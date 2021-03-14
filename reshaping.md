@@ -27,11 +27,12 @@ Scaled to [-1,1] range and reshaped to have same standard deviation:
 
 #### reshaping functions
 
+##### `expt` reshaping
 First attempt was `(* (signum x) (- 1 (expt (- 1 (abs x)) K)))`, which does reaonably well but has slightly odd looking distribution when expanding a lot.
 
 Graph of function from `1/8` to `16`:
 
-![graphs of expt reshaping function for various K](images/reshape/expt0-16.gif]
+![graphs of expt reshaping function for various K](images/reshape/expt0-16.gif)
 
 `K=1.464` gives a reasonable reshaping for 4d noise to matchdistribution of 3d noise.
 
@@ -39,15 +40,16 @@ Graph of function from `1/8` to `16`:
 
 ![reshaped noise](images/reshape/reshape2.png)
 
-
+##### `polynomial` reshaping
 
 [KdotJPG on reddit](https://www.reddit.com/r/proceduralgeneration/comments/m202at/fixing_perlin_improved_noise/gqn8056?utm_source=share&utm_medium=web2x&context=3)
 suggests using `∫(1-x2)k dx`, and linearly interpolating between
-integer `K` values.
-This seems to work a better, though it is a bit more effort to implement.
+integer `K` values (I just use a single `K` value, with `kBase` as integer part, and `kSlide` as fraction, since single value is nicer from user side).
+
+This seems to work better, though it is a bit more effort to implement.
 
 Graph of function from `0` to `32`
-![graphs of polynomial reshaping function for various K](images/reshape/k0-32.gif]
+![graphs of polynomial reshaping function for various K](images/reshape/k0-32.gif)
 
 For large values of `K`, the polynomial generates fairly large range
 of coefficients, so simple implementation starts needing double floats
@@ -55,7 +57,7 @@ around `K=18` or so.
 
 Graph of function from `0` to `32` using single floats:
 
-![graphs of polynomial reshaping function for various K](images/reshape/k0-32-single.gif]
+![graphs of polynomial reshaping function for various K](images/reshape/k0-32-single.gif])
 
 
 3d noise, 4d reshaped with `K=0.79`, fBm reshaped with `K=3.95` with polynomial:
